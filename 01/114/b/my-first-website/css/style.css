@@ -1,6 +1,6 @@
 body {
-  background-color: lightgrey;
-  color: darkslategray;
+  background-color: tomato;
+  color: darkslateblue;
   font-size: 1rem;
   font-weight: normal;
   font-style: normal;
@@ -8,33 +8,25 @@ body {
   line-height: 1.5;
   text-align: center;
 }
-h1 {
-  color: tomato;
-}
 
-h1 {
-  color: green;
-}
 
 .heading {
+  line-height: 1;
   color: black;
   font-family: georgia;
 }
 
-.highlight {
-  background-color: yellow;
-  color: orange;
+.primary {
+  font-size: 2.5rem;
+  color: lightseagreen;
 }
-
-
 
 
 /* 
   - Comments
-  - Live server extension
-  - Class naming
   - Cascading
   - Applying multiple classes
   - images
-  Next week: Fonts, colours
+  - VSCode Themes
+  Next week: Fonts, Colours
 */
