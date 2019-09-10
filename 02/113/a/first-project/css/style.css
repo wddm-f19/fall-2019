@@ -1,0 +1,40 @@
+body {
+  background-color: lightgrey;
+  color: darkslategray;
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: normal;
+  font-family: arial;
+  line-height: 1.5;
+  /* text-align: center; */
+}
+h1 {
+  color: tomato;
+}
+
+h1 {
+  color: green;
+}
+
+.heading {
+  color: black;
+  font-family: georgia;
+}
+
+.highlight {
+  background-color: yellow;
+  color: orange;
+}
+
+
+
+
+/* 
+  - Comments
+  - Live server extension
+  - Class naming
+  - Cascading
+  - Applying multiple classes
+  - images
+  Next week: Fonts, colours
+*/
