@@ -1,0 +1,45 @@
+body {
+  background-color: tomato;
+  color: darkslateblue;
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: normal;
+  font-family: arial;
+  line-height: 1.5;
+  /* text-align: center; */
+}
+
+h1 {
+  color: blue;
+}
+
+strong {
+  font-weight: normal;
+  background-color: yellow;
+}
+
+.heading {
+  line-height: 1;
+  color: black;
+  font-family: georgia;
+}
+
+.primary {
+  font-size: 2.5rem;
+  color: lightseagreen;
+}
+
+.happy {
+  color: pink;
+  background-color: coral;
+  margin: 0 3rem;
+}
+
+/* 
+  - Comments
+  - Cascading
+  - Applying multiple classes
+  - images
+  - VSCode Themes
+  Next week: Fonts, Colours
+*/
