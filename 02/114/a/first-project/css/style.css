@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Raleway:900,900i&display=swap');
+
+/* 
+# Schedule
+Break: 10:40 - 10:50
+Work: 10:50 - 11:15
+Lesson: 11:15 - 11:35
+
+# Todo Now:
+- Add a custom Google font to your web page (fonts.google.com)
+- Ensure all fonts have at least one web-safe backup + a category backup
+- Add a background image to something
+- Add a gradient to something (cssgradients.io)
+- Cleanup styling + content, prepare to complete/submit
+
+# Remaining Lesson:
+- em vs rem
+- letter-spacing, word-spacing, text-shadow, box-shadow, text-transform, text-decoration
+*/
+
+
+body {
+  background-color: lightgrey;
+  color: darkslategray;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1rem;
+  font-family: 'Playfair Display', georgia, times, 'times new roman', serif; 
+  line-height: 1.5;
+  /* text-align: center; */
+}
+
+
+.heading {
+  color: black;
+  font-family: 'Raleway', arial, helvetica, sans-serif;
+}
+
+.highlight {
+  background-color: yellow;
+  color: orange;
+}
+
+.footer {
+  background-color: #222222;
+  color: #ffffff;
+}
+
+
+/* 
+  - Comments
+  - Live server extension
+  - Class naming
+  - Cascading
+  - Applying multiple classes
+  - images
+  Next week: Fonts, colours
+*/

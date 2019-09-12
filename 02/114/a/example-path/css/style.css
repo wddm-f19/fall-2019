@@ -1,0 +1,16 @@
+body {
+    background-color: lightgrey;
+    background: linear-gradient(90deg, rgba(247,255,81,1) 0%, rgba(255,0,157,1) 100%);
+}
+
+/* .gallery-img {
+    background-image: url('/img/photos/yellow.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+} */
+
+/* img {
+    width: 10em;
+} */
