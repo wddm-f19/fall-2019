@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  background-color: cadetblue;
+  color: white;
+  text-align: justify;
+
+  display: inline-block;
+
+  width: 50%;
+  height: auto;
+  padding: 16px;
+  border: 16px solid black;
+}
+
+.link {
+  background-color: goldenrod;
+}
+
+.menu {
+  padding-left: 0;
+}
+
+.menu-item {
+  display: inline-block;
+  list-style: none;
+  padding: 1rem 1.5rem;
+
+  background-color: lightgreen;
+}
+.menu-link {
+  display: inline;
+  text-decoration: none;
+}
