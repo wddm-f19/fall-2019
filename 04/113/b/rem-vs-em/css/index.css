@@ -1,0 +1,24 @@
+html {
+  font-size: 1rem;
+}
+
+body {
+  background-color: lightsteelblue;
+  line-height: 1;
+  margin: 0;
+}
+
+
+.layout {
+  font-size: 1.25rem; 
+}
+
+.story {
+  font-size: 1.25rem; 
+}
+
+.headline {
+  font-size: 1.25rem;
+  margin: 1em 0;
+  border-bottom: 0.0625rem solid black;
+}

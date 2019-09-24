@@ -1,0 +1,26 @@
+html {
+  font-size: 1rem;
+}
+
+body {
+  background-color: lightsteelblue;
+  line-height: 1;
+  font-size: 1em;
+}
+
+.container {
+  font-size: 1em;
+}
+
+.layout {
+  font-size: 1.5em;
+}
+
+.story {
+  font-size: 1.5em;
+}
+
+.headline {
+  font-size: 1.5rem;
+  margin: 1em 0;
+}

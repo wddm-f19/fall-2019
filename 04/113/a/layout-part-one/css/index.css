@@ -1,0 +1,44 @@
+html {
+  margin: 0;
+}
+body {
+  background-color: teal;
+  margin: 0;
+}
+
+.container {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.layout {
+  background-color: tomato;
+  padding: 0 1em;
+  overflow: hidden;
+}
+.two {
+  background-color: lightgreen;
+}
+
+img {
+  max-width: 100%;
+}
+
+.align {
+  vertical-align: bottom;
+}
+
+/* 
+display
+box-sizing
+width
+height
+padding
+border
+margin
+max-width
+min-width
+max-height
+min-height
+overflow
+*/

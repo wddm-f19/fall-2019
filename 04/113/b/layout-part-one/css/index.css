@@ -1,0 +1,56 @@
+body {
+  /* background-color: teal; */
+  height: auto;
+  margin: 0;
+}
+.menubar {
+  background-color: black;
+  min-height: 5em;
+}
+.layout {
+  /* background-color: tomato; */
+  padding: 0 1em;
+}
+
+.one {
+  background-color: goldenrod;
+  overflow: hidden;
+  padding: 0 1em;
+}
+.two {
+  background-color: aquamarine;
+  overflow: hidden;
+  padding: 0 1em;
+}
+
+
+.container {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* 
+BOX MODEL
+
+display
+box-sizing
+
+width
+height
+padding
+border
+margin
+
+min-width
+max-width
+min-height
+max-height
+
+overflow
+
+
+*/
