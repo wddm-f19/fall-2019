@@ -1,0 +1,19 @@
+body {
+  background-color: darkcyan;
+}
+
+.news-img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+/* Block elements can self-center using margin left/right auto */
+
+.images {
+  text-align: center;
+}
+.news-img {
+  display: inline;
+  max-width: 100%;
+}
+/* Inline elements must be centered by their parent using text-align */
