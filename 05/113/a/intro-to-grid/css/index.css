@@ -1,0 +1,23 @@
+body {
+  background-color: lightpink;
+}
+
+.parent {
+  background-color: lightblue;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 8em 1fr 1fr 8em;
+}
+
+.one {
+  background-color: aquamarine;
+}
+.two {
+  background-color: darkseagreen;
+}
+.three {
+  background-color: deepskyblue;
+}
+.four {
+  background-color: dodgerblue;
+}

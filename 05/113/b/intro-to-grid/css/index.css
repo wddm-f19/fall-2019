@@ -1,0 +1,28 @@
+body {
+  background-color: lightpink;
+  margin: 0;
+}
+
+.parent {
+  background-color: lightgoldenrodyellow;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 10em auto 10em;
+  grid-gap: 1em;
+}
+.child {
+  line-height: 1.5;
+  padding: 1em;
+}
+.one {
+  background-color: darkcyan;
+}
+.two {
+  background-color: darkseagreen
+}
+.three {
+  background-color: deepskyblue;
+}
+.four {
+  background-color: lightblue;
+}
