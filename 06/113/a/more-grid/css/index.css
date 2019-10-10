@@ -1,0 +1,35 @@
+
+body {
+  font: 1.5em helvetica, arial, sans-serif;
+  margin: 0;
+}
+.container {
+  background-color: lightgreen;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 10em 5em 5em;
+  grid-template-rows: 2fr 3fr 2fr 2fr 3fr 2fr 2fr;
+
+  /* Place all items into their own individual center */
+  /* place-items: center; */
+
+  /* `*-content` only works if the cols or rows don't use the whole grid size */
+  justify-content: center; 
+}
+
+
+.one { background-color: yellowgreen; grid-column: 1/4;}
+.two { 
+  background-color: yellow; 
+  grid-row: 2/4;
+  /* justify-self: center;
+  align-self: center; */
+  /* place-self: center; */
+}
+.three { background-color: gold; grid-column: 2/4; }
+.four { background-color: goldenrod; grid-row: 3/5; }
+.five { background-color: orange;  grid-row: 3/5; }
+.six { background-color: tomato; grid-row: 4/6; }
+.seven { background-color: orangered; grid-column: 2/4; }
+.eight { background-color: red; }
+.nine { background-color: crimson; grid-column: 2/4; }

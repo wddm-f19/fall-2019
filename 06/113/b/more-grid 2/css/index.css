@@ -1,0 +1,23 @@
+.container {
+  background-color: lightgreen;
+  height: 100vh;
+  display: grid;
+  grid-gap: 1em;
+  padding: 1em;
+  grid-template-columns: [left] 1fr [middle] 1fr [right];
+}
+
+.one {
+  background-color: greenyellow;
+  grid-column: left / right;
+}
+.two {
+  background-color: yellow;
+}
+.three {
+  background-color: gold;
+}
+.four {
+  background-color: goldenrod;
+  grid-column: 1 / 2;
+}

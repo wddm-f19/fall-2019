@@ -1,0 +1,30 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(3em, 10em) 1fr;
+  grid-template-areas: 
+    "head head"
+    "side stry"
+    "side rltd"
+    "foot foot";
+}
+
+.headbar {
+  background-color: dodgerblue;
+  grid-area: head;
+}
+.navbar {
+  background-color: lightskyblue;
+  grid-area: side;
+}
+.story {
+  background-color: lightblue;
+  grid-area: stry;
+}
+.related {
+  background-color: cyan;
+  grid-area: rltd;
+}
+.footbar {
+  background-color: aquamarine;
+  grid-area: foot;
+}
