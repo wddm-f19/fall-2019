@@ -6,6 +6,7 @@ Ensure your project has:
 
 1. Appropriate template with meta data in the `<head>`
     ```html
+    <!doctype html>
     <html lang="en">
       <head>
         <meta charset="utf-8">
@@ -24,3 +25,15 @@ Ensure your project has:
 3. A "README.md" file describing your project goals, approach, any other useful information
 4. Live site url that's connected to the Github master code using GH Pages
 5. Link directly from the Github code page to your live website in the Github description
+
+# Position Lesson
+
+Examples can be found in the respective folder (`a`: morning, `b`: evening).
+
+# Links
+- [Drop-down examples (evening class)](https://codepen.io/roccop/pen/BaazoVa?editors=1100)
+- [Position documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+- [Form elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
+- [Git/Github notes](https://www.notion.so/Git-Github-GH-Pages-Workflow-using-only-VSCode-4260c7c964344eae8d47e3e603de998c)
+
+
