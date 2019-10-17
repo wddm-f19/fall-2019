@@ -1,0 +1,42 @@
+.playground {
+  background-color: grey;
+  padding: 2em;
+  position: relative;
+}
+.sandbox {
+  background-color: goldenrod;
+}
+.kid {
+  width: 7em;
+  height: 7em;
+}
+/* From the ___ side of the orientation to the ___ side of this element, there are ___ */
+.freddy {
+  background-color: rebeccapurple;
+
+  /* Orientation: Viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.abby {
+  background-color: darkorchid;
+  /* Orientation: First non-static parent */
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  z-index: 200;
+}
+.ralph {
+  background-color: violet;
+  /* Orientation: Static-self */
+  position: relative;
+  top: 1em;
+  left: 1em;
+  z-index: 0;
+}
+.sarah {
+  background-color: plum;
+  position: static;
+}
