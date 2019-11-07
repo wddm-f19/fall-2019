@@ -20,9 +20,9 @@ const course = {
 document.getElementById(`name`).innerHTML = course.name;
 document.getElementById(`code`).innerHTML = course.code;
 document.getElementById(`instructor`).innerHTML = course.instructor;
-document.getElementById(`start`).innerHTML = course.start;
+document.getElementById(`start`).innerHTML = `${course.start.term} ${course.start.year}`;
 document.getElementById(`weeks`).innerHTML = course.weeks;
-document.getElementById(`duration`).innerHTML = course.duration;
+document.getElementById(`duration`).innerHTML = getDurationFromMinutes(course.duration);
 
 /*
 LAB:
@@ -40,9 +40,12 @@ LAB:
 */
 
 function getDurationFromMinutes(minutes) {
+  
+  const hrs = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  // const mins = minutes - hrs * 60; // Could also use this
 
-
-  return `H hr, M min`;
+  return `${hrs} hr, ${mins} min`;
 }
 
 getDurationFromMinutes(160);  // 2 hr, 40 min
