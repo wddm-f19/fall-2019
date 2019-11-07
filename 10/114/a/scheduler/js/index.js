@@ -29,6 +29,15 @@ const course = {
 //      divide = /
 //      remainder: %
 
+// Standard Rounding:
+//      Math.round( 4.15 )     // 4 (standard rounding)
+//      Math.round( 4.85 )     // 5 (standard rounding)
+
+// Round in one direction (up or down)
+//      Math.floor( 4.85 )     // 4 (ALWAYS round down)
+//      Math.ceil( 4.15 )      // 5 (ALWAYS round up)
+
+
 function minutesToDuration (mins) { 
   let duration = ``;
   
