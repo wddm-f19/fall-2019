@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scheduler</title>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+
+    <header>
+      <h1>Scheduler App</h1>
+      <p>Let's schedule a class. Here is the most important information required:</p>
+    </header>
+
+    <main>
+      <h2>Courses</h2>
+
+      <article class="course">
+        <h3 id="name">Applied Web Design</h3>
+        <ul>
+          <li>Course Code: <strong id="code">WDDM-114</strong></li>
+          <li>Instructor: <strong id="instructor">Rocco</strong></li>
+          <li>Start: <strong id="start">Fall 2019</strong></li>
+          <li>
+            <!-- Reminder: Compare vs 14 + 1 break -->
+            Weeks: <strong id="weeks">15</strong>
+            <ul>
+              <!-- Reminder: Compare vs just listing break weeks -->
+              <li>Includes Break: <strong id="break">Yes</strong></li>
+            </ul>
+          </li>
+          <li>Duration: <strong id="duration">2:40</strong></li> <!-- Use a function to convert from minutes -->
+        </ul>
+      </article>
+  
+    </main>
+
+
+
+    <script src="js/index.js"></script>
+  </body>
+</html>
