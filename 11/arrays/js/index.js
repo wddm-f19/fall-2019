@@ -39,5 +39,6 @@ const fruits = [
   }
 ]
 
+console.log( fruits[0].type );
 
 
