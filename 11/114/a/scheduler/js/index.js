@@ -64,4 +64,4 @@ function getCourseAsHtmlString(course) {
 // map() the Array to a new array of Strings (formatted as HTML)
 // join() the NEW Array to a new String of HTML instructions (<article>)
 // Assign the String to the document
-
+// Test by adding a new Object to allCourses
