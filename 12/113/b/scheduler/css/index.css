@@ -1,0 +1,12 @@
+body {
+  background-color: #ddd;
+  color: #111;
+  font: 1em helvetica, arial, sans-serif;
+}
+
+.course {
+  background-color: #fff;
+  padding: 0 1em;
+  overflow: hidden;
+  box-shadow: 0 0 1em rgba(0,0,0,0.4);
+}
