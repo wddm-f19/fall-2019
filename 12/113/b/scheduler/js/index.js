@@ -57,11 +57,19 @@ function getCourseAsHtmlString(course) {
 }
 
 /************* EXECUTABLE *************/
-// Execute functions that will access data
 
 
 // LAB:
-// map() the Array to a new array of Strings (formatted as HTML)
-// join() the NEW Array to a new String of HTML instructions (<article>)
-// Assign the String to the document
-// Test by adding a new Object to allCourses
+// 1. Add a button the document that when clicked, 
+// will load ONLY the first three courses
+// Test by having at least 4 courses
+
+// 2. Wrap the below functionality in a function
+// that takes the Array to print as a parameter
+// Test by passing "allCourses".
+
+// 3. Wrap the entire execution in an Event handler
+// so that the code only runs when the window
+// has finished loading
+
+document.getElementById('courses').innerHTML = allCourses.map(getCourseAsHtmlString).join('\n')

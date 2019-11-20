@@ -40,6 +40,7 @@ renderCountries()
 // }
 
 
+
 // let strOfCountries = '';
 // strOfCountries += getCountyAsHtml(countries[0]);
 // strOfCountries += getCountyAsHtml(countries[1]);
