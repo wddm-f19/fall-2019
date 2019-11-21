@@ -111,3 +111,49 @@ let msg2 = (classHasStarted) ? 'Class has started! Get here immediately.' : 'Cla
 
 console.log(msg1, msg2)
 
+
+
+
+// const checkAboveFive = (num) => {
+//   if (num > 5) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// Longest way
+/* const checkAboveFive = (num) => {
+  if (num > 5) {
+    return true;
+  } else {
+    return false;
+  }
+} */
+
+// Still long, but shorter
+/* const checkAboveFive = (num) => {
+  if (num > 5) {
+    return true;
+  }
+  return false;
+} */
+
+// Shorter
+/* const checkAboveFive = (num) => {
+  return (num > 5) ? true : false;
+} */
+
+// Very short
+/* const checkAboveFive = (num) => {
+  return (num > 5);
+}  */
+
+// Shortest!
+const checkAboveFive = arr.filter( num => num > 5 )
+
+// Apply a filter to only show numbers greater than 5
+const arr = [2, 4, 5, 6, 10];
+const arrOverFive = arr.filter( checkAboveFive );
+
+console.log(arrOverFive)

@@ -14,7 +14,7 @@ const allCourses = [
     name: `Applied Web Development`,
     code: `WDDM-113`,
     instructor: `Rocco Panacci`,
-    start: { term: `Fall`, year: 2019 },
+    start: { term: `Winter`, year: 2020 },
     weeks: 15,
     breaks: true,
     duration: 160
@@ -30,6 +30,14 @@ const allCourses = [
     name: `Design Technique`,
     code: `WDDM-116`,
     instructor: `Milorad Eftoski`,
+    start: { term: `Fall`, year: 2019 },
+    weeks: 15,
+    breaks: true,
+    duration: 160
+  },{ // 4
+    name: `Prototyping`,
+    code: `WDDM-117`,
+    instructor: `Cory Coletta`,
     start: { term: `Fall`, year: 2019 },
     weeks: 15,
     breaks: true,
@@ -76,6 +84,20 @@ function getCourseAsHtmlString(course) {
 
 
 window.addEventListener('load', () => {
+
+  // 0. Add a 5th course, then change the second course (index=1)
+  //    to start 'Winter 2020'
+
+  // 1. Write a function that:
+  //    - receives a course:Object as a parameter
+  //    - returns true when the course starts 'Fall 2019'
+  //    - returns false in all other cases
+
+  // 2. Apply the function to `filter()` as a parameter
+  //    so that the list of 3 will only consist of courses
+  //    for Fall 2019
+
+
 
   const printThreeCourses = (arr) => {
     document.getElementById('courses').innerHTML = arr.slice(0, 3).map(getCourseAsHtmlString).join('\n')
