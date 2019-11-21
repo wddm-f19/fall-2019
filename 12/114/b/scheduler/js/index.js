@@ -24,7 +24,7 @@ const allCourses = [
     instructor: `Rocco Panacci`,
     start: { term: `Fall`, year: 2019 },
     weeks: 15,
-    breaks: true,
+    breaks: false,
     duration: 160
   },{ // 3
     name: `Design Technique`,
@@ -62,8 +62,9 @@ function getDurationFromMinutes(minutes) {
 // Parameters: course:Object
 // Return: String of HTML (<article>)
 function getCourseAsHtmlString(course) {
+
   return `
-    <article class="course">
+    <article class="course ${(course.breaks) ? 'breaks' : ''}">
       <h3 id="name">${course.name}</h3>
       <ul>
         <li>Course Code: <strong>${course.code}</strong></li>
@@ -96,15 +97,16 @@ window.addEventListener('load', () => {
   //    so that the list of 3 will only consist of courses
   //    for Fall 2019
 
-
-
   const printThreeCourses = (arr) => {
     document.getElementById('courses').innerHTML = arr.slice(0, 3).map(getCourseAsHtmlString).join('\n')
   }
-  
+
+
   document.getElementById('loadCourses').addEventListener('click', () => {
-    printThreeCourses(allCourses)
-  });
+    // Do whatever
+    printThreeCourses(allCourses);
+  })
+
   
 });
 
