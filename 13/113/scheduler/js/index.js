@@ -70,7 +70,7 @@ const getDurationFromMinutes = (minutes) => {
 //    - returns false in all other cases
 const checkStartTerm = (course) => {
 
-  if (course.start.term == 'Fall' && course.start.year == 2019) {
+  if (course.start.term == 'Winter' && course.start.year == 2020) {
     return true;
   }
 
@@ -105,7 +105,13 @@ const getCourseAsHtmlString = (course) => {
 // Parameters: arr:Array to print
 // Returns: none
 const renderCoursesToDocument = (arr) => {
-  document.getElementById('courses').innerHTML = arr.map(getCourseAsHtmlString).join('\n')
+  document.getElementById('courses').innerHTML = arr.map(getCourseAsHtmlString).join('\n');
+
+  let res = `results`
+  if (arr.length == 1) {
+    res = `result`
+  }
+  document.getElementById('numResults').innerHTML = `(${arr.length} ${res})`;
 }
 
 
@@ -117,10 +123,19 @@ const renderCoursesToDocument = (arr) => {
 // const justFall2019 = allCourses.filter(checkStartTerm);
 // console.table(justFall2019);
 
+// Store reference to Element
+const fall2019 = document.getElementById('fall2019');
+
+// Add listener
+fall2019.addEventListener('click', (event) => {
+
+  // Tell me more about the Event that occured...
+  console.log(event);
+
+  const justFall2019 = allCourses.filter(checkStartTerm);
+  renderCoursesToDocument(justFall2019);
+  
+});
 
 // on window load:
 renderCoursesToDocument(allCourses);
-
-
-
-
