@@ -4,12 +4,21 @@ body {
   font: 1em helvetica, arial, sans-serif;
 }
 
+.courses {
+  display: grid;
+  grid-gap: 1em;
+}
+
+#layout {
+  display: none;
+}
+
 .course {
   background-color: #fff;
   padding: 0 1em;
   overflow: hidden;
   box-shadow: 0 0 1em rgba(0,0,0,0.4);
-  margin: 1em 0;
+  /* margin: 1em 0; */
 }
 
 .course-name {
@@ -21,4 +30,20 @@ body {
 }
 .cat-development {
   border-left: 5px solid teal;
+}
+
+.form-component:disabled {
+  background-color: grey;
+}
+.form-component:focus {
+  outline: 3px solid salmon;
+}
+
+@media screen and (min-width: 30em) {
+  .grid-view {
+    grid-template-columns: 1fr 1fr;
+  }
+  #layout {
+    display: inline-block;
+  }
 }

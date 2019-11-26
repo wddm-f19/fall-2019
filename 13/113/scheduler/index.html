@@ -12,12 +12,37 @@
     <header>
       <h1>Scheduler App</h1>
       <p>Let's schedule a class. Here is the most important information required:</p>
+
+      <form id="filterCourses">
+        <input type="text" name="coursename" value="" placeholder="Search..." class="form-component" id="coursename">
+        <input type="password" name="pw" value="afdsf" class="form-component">
+
+        <input type="radio" name="layout" value="1">
+        <input type="radio" name="layout" value="2">
+
+        <input type="checkbox" name="breaks" value="true">
+        <input type="checkbox" name="breaks" value="false">
+
+        <textarea name="comment">Put the text here. Why?!</textarea>
+
+        <select name="sort">
+          <option value="" selected disabled>--- Sort By ---</option>
+          <option value="duration">Duration</option>
+          <option value="start">Start Term</option>
+          <option value="weeks">Number of Weeks</option>
+        </select>
+
+        <button type="submit">Submit</button>
+        <input type="submit" value="Submit">
+      </form>
+
       <button id="fall2019">Load courses</button>
+      <button id="layout">Toggle Layout</button>
     </header>
 
     <main>
       <h2>Courses <small id="numResults"></small></h2>
-      <section id="courses"></section>
+      <section id="courses" class="courses"></section>
     </main>
 
     <script src="js/index.js"></script>

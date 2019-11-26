@@ -78,13 +78,21 @@ const checkStartTerm = (course) => {
 }
   
 
+const toggleCourseView = () => {
+
+  //document.getElementById('courses').className = `courses grid-view`;
+  document.getElementById('courses').classList.toggle('grid-view')
+}
+
+
 
 // Function:
 // Parameters: course:Object
 // Return: String of HTML (<article>)
 const getCourseAsHtmlString = (course) => {
+
   return `
-    <article class="course${(course.category) ? ` cat-${course.category}` : ''}">
+    <article class="course ${(course.category) ? `cat-${course.category}` : ''}">
       <h3 id="name" class="course-name">${course.name}</h3>
       <ul>
         <li>Course Code: <strong>${course.code}</strong></li>
@@ -116,6 +124,7 @@ const renderCoursesToDocument = (arr) => {
 
 
 
+
 /************* EXECUTABLE *************/
 
 
@@ -125,6 +134,18 @@ const renderCoursesToDocument = (arr) => {
 
 // Store reference to Element
 const fall2019 = document.getElementById('fall2019');
+const layout = document.getElementById('layout');
+const coursename = document.getElementById('coursename');
+
+
+coursename.addEventListener('input', event => {
+  const whatsInTheField = coursename.value;
+
+  // Filter by name!
+  const searchedByName = allCourses.filter(c => c.name.toUpperCase().includes(whatsInTheField.toUpperCase()))
+  renderCoursesToDocument(searchedByName);
+
+})
 
 // Add listener
 fall2019.addEventListener('click', (event) => {
@@ -136,6 +157,9 @@ fall2019.addEventListener('click', (event) => {
   renderCoursesToDocument(justFall2019);
   
 });
+
+
+layout.addEventListener('click', toggleCourseView)
 
 // on window load:
 renderCoursesToDocument(allCourses);
