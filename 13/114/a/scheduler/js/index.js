@@ -176,10 +176,12 @@ window.addEventListener('load', () => {
 
 /* 
 ? Today:
-  * Selecting elements in different ways
-  * Styling forms and states
-  * Submit forms and filter
-  * Sorting
+  * Selecting document elements in other ways
+  * Iterating over multiple selections
+  * Styling form elements (and states)
+  * Events for <form>, <select>, type="radio", type="checkbox"
+  * Sorting Arrays by number and string
+  * Filtering examples
 
 ? Next class:
   * Pagination

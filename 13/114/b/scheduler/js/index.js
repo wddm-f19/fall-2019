@@ -16,7 +16,7 @@ const allCourses = [
     code: `WDDM-113`,
     instructor: `Rocco Panacci`,
     start: { term: `Winter`, year: 2020 },
-    weeks: 15,
+    weeks: 12,
     breaks: true,
     duration: 160,
     category: `development`
@@ -25,7 +25,7 @@ const allCourses = [
     code: `WDDM-114`,
     instructor: `Rocco Panacci`,
     start: { term: `Fall`, year: 2019 },
-    weeks: 15,
+    weeks: 8,
     breaks: false,
     duration: 160,
     category: `design`
@@ -43,7 +43,7 @@ const allCourses = [
     code: `WDDM-117`,
     instructor: `Cory Coletta`,
     start: { term: `Fall`, year: 2019 },
-    weeks: 15,
+    weeks: 3,
     breaks: true,
     duration: 160,
     category: `development`
@@ -63,11 +63,9 @@ const getDurationFromMinutes = (minutes) => {
   return `${hrs} hr, ${mins} min`;
 }
 
-
 const toggleCourseView = () => {
   document.getElementById('courses').classList.toggle('grid-view');
 }
-
 
 const checkForCourseName = () => {
 
@@ -80,7 +78,6 @@ const checkForCourseName = () => {
   // String methods:  trim(), toUpperCase() or toLowerCase(), then includes()
 }
 
-
 const isCourseInTerm = (course) => {
   // start: { term: `Fall`, year: 2019 },
   if (course.start.term == `Winter` && course.start.year == 2020) {
@@ -88,7 +85,6 @@ const isCourseInTerm = (course) => {
   }
   return false;
 }
-
 
 const loadCoursesFromTerm = () => {
     
@@ -142,6 +138,29 @@ window.addEventListener('load', () => {
   document.getElementById('courseView').addEventListener('click', toggleCourseView);
   document.getElementById('courseName').addEventListener('input', checkForCourseName);
 
+  document.getElementById('sortOrder').addEventListener('change', event => {
+    console.log(event.target.value)
+
+    if (event.target.value == 'weeksAsc') {
+      // Smallest to largest
+      const sortedCourses = allCourses.slice().sort((a, b) => a.weeks - b.weeks);
+      renderCoursesFromArray(sortedCourses);
+    } else if (event.target.value == 'weeksDesc') {
+      // Largest to smallest
+      const sortedCourses = allCourses.slice().sort((a, b) => b.weeks - a.weeks);
+      renderCoursesFromArray(sortedCourses);
+    } else if (event.target.value == 'nameAsc') {
+      // Largest to smallest
+      const sortedCourses = allCourses.slice().sort((a, b) => a.name.localeCompare(b.name));
+      renderCoursesFromArray(sortedCourses);
+    } else if (event.target.value == 'nameDesc') {
+      // Largest to smallest
+      const sortedCourses = allCourses.slice().sort((a, b) => b.name.localeCompare(a.name));
+      renderCoursesFromArray(sortedCourses);
+    }
+  })
+
+
   // Start
   renderCoursesFromArray(allCourses);
 });
@@ -149,10 +168,12 @@ window.addEventListener('load', () => {
 
 /* 
 ? Today:
-  * Selecting elements in different ways
-  * Styling forms and states
-  * Submit forms and filter
-  * Sorting
+  * Selecting document elements in other ways
+  * Iterating over multiple selections
+  * Styling form elements (and states)
+  * Events for <form>, <select>, type="radio", type="checkbox"
+  * Sorting Arrays by number and string
+  * Filtering examples
 
 ? Next class:
   * Pagination
@@ -164,3 +185,20 @@ window.addEventListener('load', () => {
     * Assigning ids
     * Event delegation
 */
+
+
+/* const sortByLetter = (a, b) => {
+  if (a < b) {
+    return -1;
+  }
+  return 1;
+}
+
+const words = ['a', 'd', 'b', 'A']
+words.sort((a, b) => a.localeCompare(b));
+console.log(words)
+
+const unsorted = [100, 6, 30, 9, 7];
+const sorted = unsorted.slice().sort((a, b) => a - b);  // make a copy
+
+console.log(unsorted, sorted) */

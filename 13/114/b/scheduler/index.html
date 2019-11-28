@@ -15,14 +15,16 @@
 
       <form>
         <input type="text" name="find" id="courseName">
-        <input type="password" name="pw">
-        <input type="submit" value="Go look for it">
-        <input type="radio" name="layout" value="grid">
-        <input type="radio" name="layout" value="row">
-        <input type="checkbox" name="">
-        <input type="checkbox" name="">
-        <textarea name="">some default</textarea>
       </form>
+
+      <select name="sort" id="sortOrder" class="sort">
+        <option value="" disabled selected>-- Sort by --</option>
+        <option value="weeksAsc">Weeks, Least to Most</option>
+        <option value="weeksDesc">Weeks, Most to Least</option>
+        <option value="nameAsc">Name, A to Z</option>
+        <option value="nameDesc">Name, Z to A</option>
+      </select>
+
 
       <button id="fallCourses">Load Fall 2019</button>
       <button id="courseView">Toggle Layout</button>

@@ -4,11 +4,11 @@ body {
   font: 1em helvetica, arial, sans-serif;
 }
 
-
+/* <button type="button" id="hello" class="btn">Hello</button> */
 /* All of these selectors target this element */
+
 * { color: black; }
 button { color: black; }
 .btn { color: black; }
 [type="button"] { color: black; }
-[class="btn"] { color: black; }
-#doSomething { color: black; }
+#hello { color: black; }

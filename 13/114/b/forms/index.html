@@ -12,7 +12,7 @@
     <form name="exampleForm" id="exFrm">
 
       <label>Hello my name is...
-        <input type="text" name="myName">
+        <input type="text" name="myName" id="textName" class="inpt">
       </label>
         
       <select name="selectOnOrOff" id="selectLights" class="select-lights">
@@ -23,10 +23,17 @@
       <fieldset>
         <legend>The lights are...</legend>
 
-        <!-- type="radio" with name="radioOnOrOff" labeled in two different ways -->
 
-
+        <label class="option">
+          <input type="radio" name="radioOnOrOff" value="1" id="radioOn" class="radio" checked> 
+          <span class="radio-btn">On</span>
+        </label>
         
+        <div class="option">
+          <input type="radio" name="radioOnOrOff" value="0" id="radioOff" class="radio">
+          <label for="radioOff" class="radio-btn">Off</label>
+        </div>
+
       </fieldset>
       
 
