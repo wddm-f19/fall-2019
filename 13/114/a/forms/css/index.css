@@ -1,0 +1,61 @@
+body {
+  background-color: #ddd;
+  color: #111;
+  font: 1em helvetica, arial, sans-serif;
+}
+
+.option {
+  position: relative;
+  display: inline-block;
+}
+.binary {
+  /* display: none; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.btn {
+  display: inline-block;
+  background-color: darkslateblue;
+  color: white;
+  text-shadow: 1px 1px black;
+  padding: 0.25em 0.5em;
+  border-radius: 0.125em;
+  box-shadow: 0.125em 0.125em 0 slateblue;
+}
+.binary:checked + .btn {
+  color: red;
+}
+
+
+.sort {
+  display: inline-block;
+  border: 2px solid black;
+  width: 8em;
+  font: 1.25em georgia, serif;
+  background-color: darkslateblue;
+  box-shadow: 0.125em 0.125em 0 slateblue;
+  color: white;
+  text-shadow: 1px 1px black;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.25em 0.5em;
+  background-image: url('https://img.icons8.com/plasticine/2x/down.png');
+  background-size: 1.5em;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+/* .sort:focus {
+  rotate it
+} */
+/* Should be done with :before and :after */
+
+
+/* 
+-webkit-appearance: none;
+-moz-appearance: none;
+text-indent: 1px;
+text-overflow: ''; */

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selecting Elements</title>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+
+
+    <form name="exampleForm" id="exFrm">
+      <label class="option">
+        <input type="radio" name="onOrOff" value="0" class="binary" checked>
+        <span class="btn">Off</span>
+      </label>
+      
+      <div class="option">
+        <input type="radio" name="onOrOff" value="1" id="testOn" class="binary">
+        <label class="btn" for="testOn">On</label>
+      </div>
+    
+
+      <select name="sort" id="sortOrder" class="sort">
+        <option value="price">Price</option>
+        <option value="size">Size</option>
+      </select>
+
+      <input type="text">
+
+      <button type="submit">Submit</button>
+      <input type="submit" value="Submit">
+    </form>
+
+<!-- 
+
+    <form>
+      
+      <fieldset>
+        <legend>Select a colour</legend>
+        <ul class="swatches">
+          <li>
+            <label class="product-color red">
+              <input type="radio" name="colour" value="r" checked>
+              <span>Red</span>
+            </label>
+          </li>
+      
+          <li>
+            <label class="product-color white">
+              <input type="radio" name="colour" value="w">
+              <span>White</span>
+            </label>
+          </li>
+      
+          <li>
+            <label class="product-color blue">
+              <input type="radio" name="colour" value="b"> 
+              <span>Blue</span>
+            </label>
+          </li>
+        </ul>
+        <output id="selected"></output>
+      </fieldset>
+
+
+    </form> -->
+
+    
+    <script src="js/index.js"></script>
+  </body>
+</html>
