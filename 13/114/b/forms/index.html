@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Elements</title>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+
+    <form name="exampleForm" id="exFrm">
+
+      <label>Hello my name is...
+        <input type="text" name="myName">
+      </label>
+        
+      <select name="selectOnOrOff" id="selectLights" class="select-lights">
+        <option value="0">Off</option>
+        <option value="1">On</option>
+      </select>
+
+      <fieldset>
+        <legend>The lights are...</legend>
+
+        <!-- type="radio" with name="radioOnOrOff" labeled in two different ways -->
+
+
+        
+      </fieldset>
+      
+
+      <button type="submit">Submit</button>
+      <input type="submit" value="Submit">
+
+    </form>
+
+<!-- 
+
+    <form>
+      
+      <fieldset>
+        <legend>Select a colour</legend>
+        <ul class="swatches">
+          <li>
+            <label class="product-color red">
+              <input type="radio" name="colour" value="r" checked>
+              <span>Red</span>
+            </label>
+          </li>
+      
+          <li>
+            <label class="product-color white">
+              <input type="radio" name="colour" value="w">
+              <span>White</span>
+            </label>
+          </li>
+      
+          <li>
+            <label class="product-color blue">
+              <input type="radio" name="colour" value="b"> 
+              <span>Blue</span>
+            </label>
+          </li>
+        </ul>
+        <output id="selected"></output>
+      </fieldset>
+
+
+    </form> -->
+
+    
+    <script src="js/index.js"></script>
+  </body>
+</html>

@@ -16,7 +16,7 @@ const allCourses = [
     code: `WDDM-113`,
     instructor: `Rocco Panacci`,
     start: { term: `Winter`, year: 2020 },
-    weeks: 8,
+    weeks: 15,
     breaks: true,
     duration: 160,
     category: `development`
@@ -25,7 +25,7 @@ const allCourses = [
     code: `WDDM-114`,
     instructor: `Rocco Panacci`,
     start: { term: `Fall`, year: 2019 },
-    weeks: 12,
+    weeks: 15,
     breaks: false,
     duration: 160,
     category: `design`
@@ -34,7 +34,7 @@ const allCourses = [
     code: `WDDM-116`,
     instructor: `Milorad Eftoski`,
     start: { term: `Fall`, year: 2019 },
-    weeks: 3,
+    weeks: 15,
     breaks: true,
     duration: 160,
     category: `design`
@@ -89,36 +89,11 @@ const isCourseInTerm = (course) => {
   return false;
 }
 
+
 const loadCoursesFromTerm = () => {
     
   const justFall2019 = allCourses.filter(isCourseInTerm);
   renderCoursesFromArray(justFall2019);
-}
-
-const sortCourseWeeks = (arrToSort) => {
-  return arrToSort.slice().sort((a, b) => a.weeks - b.weeks);
-}
-const sortCourseName = (arrToSort, dir='asc') => {
-  if (dir == 'asc') {
-    return arrToSort.slice().sort((a, b) => (b.name < a.name) ? 1 : -1);
-  } else if (dir == 'desc') {
-    return arrToSort.slice().sort((a, b) => (b.name < a.name) ? -1 : 1);
-  } else {
-    return arrToSort.slice();
-  }
-}
-
-const sortSelectHasChanged = event => {
-  const sort = event.target.value
-
-  if (sort == 'weeks') {
-    renderCoursesFromArray(sortCourseWeeks(allCourses))
-  } else if (sort == 'nameAsc') {
-    renderCoursesFromArray(sortCourseName(allCourses, 'asc'))
-  } else if (sort == 'nameDesc') {
-    renderCoursesFromArray(sortCourseName(allCourses, 'desc'))    
-  }
-
 }
 
 // Function:
@@ -166,12 +141,10 @@ window.addEventListener('load', () => {
   document.getElementById('fallCourses').addEventListener('click', loadCoursesFromTerm);
   document.getElementById('courseView').addEventListener('click', toggleCourseView);
   document.getElementById('courseName').addEventListener('input', checkForCourseName);
-  document.getElementById('sortOrder').addEventListener('change', sortSelectHasChanged)
 
   // Start
   renderCoursesFromArray(allCourses);
 });
-
 
 
 /* 
