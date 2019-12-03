@@ -54,6 +54,8 @@ const allCourses = [
 /************* FUNCTIONS *************/
 // Now store all the functions that will manipulate the data
 
+
+// UTILITY FUNCTIONS **************
 const getDurationFromMinutes = minutes => {
   
   const hrs = Math.floor(minutes / 60);
@@ -71,6 +73,8 @@ const isCourseInTerm = course => {
   return false;
 }
 
+
+// EVENT HANDLER FUNCTIONS **************
 const toggleCourseView = event => {
   document.getElementById('courses').classList.toggle('grid-view');
 }
@@ -115,14 +119,12 @@ const loadCoursesByOrder = event => {
 }
 
 
-
-
-// FUNCTIONS THAT BUILD OUR VIEW
+// FUNCTIONS THAT BUILD OUR VIEW **************
 
 // Function:
 // Parameters: course:Object
 // Return: String of HTML (<article>)
-const getCourseAsHtmlString = (course) => {
+const getCourseAsHtmlString = course => {
 
   return `
     <article class="course ${(course.category) ? `cat-${course.category}` : ''}">
@@ -142,7 +144,7 @@ const getCourseAsHtmlString = (course) => {
     </article>`;
 }
 
-const renderCoursesFromArray = (arr) => {
+const renderCoursesFromArray = arr => {
   document.getElementById('courses').innerHTML = arr.map(getCourseAsHtmlString).join('\n');
 
   let res = 'results';
