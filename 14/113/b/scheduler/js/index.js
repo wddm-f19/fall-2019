@@ -99,12 +99,13 @@ const addItemToCart = courseid => {
 
   const cartItem = shoppingCart.find(item => item.courseid == courseid);
 
-  if (cartItem) {
+  if (cartItem) {  // if a cartItem was found
     cartItem.qty++;
   } else {
     shoppingCart.push({courseid: courseid, qty: 1});
   }
   
+ 
 
   // if (this id already exist in the Array) {
   //   Update the quantity of the item
@@ -230,7 +231,7 @@ const getCourseAsHtmlString = course => {
   return `
     <article class="course ${(course.category) ? `cat-${course.category}` : ''} ${soldout}">
       <h3 id="name">${course.name} ${callout}</h3>
-      <img src="${settings.imagepath + course.image}" alt="${course.name}">
+      <img src="${settings.imgpath + course.image}" alt="${course.name}">
       <ul class="course-info">
         <li>Course Code: <strong>${course.code}</strong></li>
         <li>Instructor: <strong>${course.instructor}</strong></li>
