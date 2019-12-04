@@ -1,8 +1,13 @@
 /******* GLOABL VARIABLES/DATA ********/
 // Define all of your variables here, including Object and Array references
 
+const shoppingCart = [
+  {courseid: 101, qty: 1}
+];
+
 const allCourses = [
   { // 0
+    id: 101, 
     name: `Tools and Workflow`,
     code: `WDDM-115`,
     instructor: `Kadeem Best`,
@@ -10,8 +15,10 @@ const allCourses = [
     weeks: 15,
     breaks: true,
     duration: 160,
-    category: null
+    category: null,
+    available: 6
   },{  // 1
+    id: 102, 
     name: `Applied Web Development`,
     code: `WDDM-113`,
     instructor: `Rocco Panacci`,
@@ -19,8 +26,10 @@ const allCourses = [
     weeks: 12,
     breaks: true,
     duration: 160,
-    category: `development`
+    category: `development`,
+    available: 2
   },{ // 2
+    id: 103, 
     name: `Applied Web Design`,
     code: `WDDM-114`,
     instructor: `Rocco Panacci`,
@@ -28,8 +37,10 @@ const allCourses = [
     weeks: 8,
     breaks: false,
     duration: 160,
-    category: `design`
+    category: `design`,
+    available: 12
   },{ // 3
+    id: 104, 
     name: `Design Technique`,
     code: `WDDM-116`,
     instructor: `Milorad Eftoski`,
@@ -37,8 +48,10 @@ const allCourses = [
     weeks: 15,
     breaks: true,
     duration: 160,
-    category: `design`
+    category: `design`,
+    available: 0
   },{ // 4
+    id: 105, 
     name: `Prototyping`,
     code: `WDDM-117`,
     instructor: `Cory Coletta`,
@@ -46,7 +59,8 @@ const allCourses = [
     weeks: 3,
     breaks: true,
     duration: 160,
-    category: `development`
+    category: `development`,
+    available: 10
   }
 ];
 
@@ -73,6 +87,21 @@ const isCourseInTerm = course => {
   return false;
 }
 
+const addItemToCart = courseid => {
+  /*
+  if (this id already exist in the Array) {
+    Update the quantity of the item
+  } else if (it does not exist) {
+    Add a new item to the shoppingCart
+  }
+  */
+​
+  // Is it important to return a value here? 
+  //    Why would we? Why not?
+  // What else might we need/want this function to do? 
+  //    If anything, weigh the pros/cons of doing it here vs elsewhere
+}
+​
 
 // EVENT HANDLER FUNCTIONS **************
 const toggleCourseView = event => {
@@ -118,6 +147,15 @@ const loadCoursesByOrder = event => {
   }
 }
 
+const handleClickOfCourses = event => {
+  if (!event.target.matches('button.course-register')) {
+    return;
+  }
+
+  const courseid = parseInt(event.target.dataset.courseid);
+  
+  addItemToCart(courseid);
+}
 
 // FUNCTIONS THAT BUILD OUR VIEW **************
 
@@ -126,9 +164,20 @@ const loadCoursesByOrder = event => {
 // Return: String of HTML (<article>)
 const getCourseAsHtmlString = course => {
 
+  let callout = ``;
+  let soldout = ``;
+  let register = `<button type="button" class="course-register" data-courseid="${course.id}">Register</button>`;
+  if (course.available <= 0) {
+    callout = `<small class="callout">Sold out</small>`;
+    soldout = `soldout`;
+    register = ``;
+  } else if (course.available < 5) {
+    callout = `<small class="callout urgent">Limited seats remaining</small>`;
+  }
+
   return `
-    <article class="course ${(course.category) ? `cat-${course.category}` : ''}">
-      <h3 id="name">${course.name}</h3>
+    <article class="course ${(course.category) ? `cat-${course.category}` : ''} ${soldout}">
+      <h3 id="name">${course.name} ${callout}</h3>
       <ul class="course-info">
         <li>Course Code: <strong>${course.code}</strong></li>
         <li>Instructor: <strong>${course.instructor}</strong></li>
@@ -141,6 +190,7 @@ const getCourseAsHtmlString = course => {
         </li>
         <li>Duration: <strong>${getDurationFromMinutes(course.duration)}</strong></li>
       </ul>
+      ${register}
     </article>`;
 }
 
@@ -151,9 +201,13 @@ const renderCoursesFromArray = arr => {
   if (arr.length == 1) {
     res = 'result'
   }
-  //let res = (arr.length > 1) ? 'results' : 'result';
-
   document.getElementById('numResults').innerHTML = `(${arr.length} ${res})`;
+
+  // document.querySelectorAll('button.course-register').forEach(btn => {
+  //   btn.addEventListener('click', event => {
+  //     console.log(event);
+  //   })
+  // });
 }
 
 
@@ -167,9 +221,11 @@ window.addEventListener('load', () => {
   document.getElementById('fallCourses').addEventListener('click', loadCoursesFromTerm);
   document.getElementById('courseName').addEventListener('input', loadCoursesByName);
   document.getElementById('sortOrder').addEventListener('change', loadCoursesByOrder);
+  document.getElementById('courses').addEventListener('click', handleClickOfCourses);
 
   // Start
   renderCoursesFromArray(allCourses);
+
 });
 
 
