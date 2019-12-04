@@ -1,6 +1,12 @@
 /******* GLOABL VARIABLES/DATA ********/
 // Define all of your variables here, including Object and Array references
 
+const settings = {
+  limited: 5,
+  perpage: 3,
+  imgpath: 'img/'
+}
+
 const shoppingCart = [
   {courseid: 101, qty: 1}
 ];
@@ -16,7 +22,8 @@ const allCourses = [
     breaks: true,
     duration: 160,
     category: null,
-    available: 6
+    available: 6,
+    image: 'whatever.jpg'
   },{  // 1
     id: 102, 
     name: `Applied Web Development`,
@@ -88,20 +95,38 @@ const isCourseInTerm = course => {
 }
 
 const addItemToCart = courseid => {
-  /*
-  if (this id already exist in the Array) {
-    Update the quantity of the item
-  } else if (it does not exist) {
-    Add a new item to the shoppingCart
+  // [ {courseid: 101, qty: 1} ]
+
+  const cartItem = shoppingCart.find(item => item.courseid == courseid);
+
+  if (cartItem) {
+    cartItem.qty++;
+  } else {
+    shoppingCart.push({courseid: courseid, qty: 1});
   }
-  */
-​
+  
+
+  // if (this id already exist in the Array) {
+  //   Update the quantity of the item
+  // } else if (it does not exist) {
+  //   Add a new item to the shoppingCart
+  // }
+
   // Is it important to return a value here? 
   //    Why would we? Why not?
   // What else might we need/want this function to do? 
   //    If anything, weigh the pros/cons of doing it here vs elsewhere
 }
-​
+
+// const isStringInName = c => {
+//   console.log(this);
+//   //return c.name.toLowerCase().includes(this);
+// }
+
+// function isStringInName(c) {
+//   return c.name.toLowerCase().includes(this);
+// }
+
 
 // EVENT HANDLER FUNCTIONS **************
 const toggleCourseView = event => {
@@ -120,31 +145,58 @@ const loadCoursesByName = event => {
   console.log(whatToSearch)
   const cleanVersion = whatToSearch.trim().toLowerCase();
 
-  const resultsFromSearch = allCourses.filter(c => c.name.toLowerCase().includes(cleanVersion)  );
-  renderCoursesFromArray(resultsFromSearch)
+  const resultsFromSearch = allCourses.filter(c => c.name.toLowerCase().includes(cleanVersion));
+  renderCoursesFromArray(resultsFromSearch);
   // String methods:  trim(), toUpperCase() or toLowerCase(), then includes()
 }
 
 const loadCoursesByOrder = event => {
   console.log(event.target.value)
 
+  let sortedCourses;
+
   if (event.target.value == 'weeksAsc') {
     // Smallest to largest
-    const sortedCourses = allCourses.slice().sort((a, b) => a.weeks - b.weeks);
-    renderCoursesFromArray(sortedCourses);
+    sortedCourses = allCourses.slice().sort((a, b) => a.weeks - b.weeks);
   } else if (event.target.value == 'weeksDesc') {
     // Largest to smallest
-    const sortedCourses = allCourses.slice().sort((a, b) => b.weeks - a.weeks);
-    renderCoursesFromArray(sortedCourses);
+    sortedCourses = allCourses.slice().sort((a, b) => b.weeks - a.weeks);
   } else if (event.target.value == 'nameAsc') {
     // Largest to smallest
-    const sortedCourses = allCourses.slice().sort((a, b) => a.name.localeCompare(b.name));
-    renderCoursesFromArray(sortedCourses);
+    sortedCourses = allCourses.slice().sort((a, b) => a.name.localeCompare(b.name));
   } else if (event.target.value == 'nameDesc') {
     // Largest to smallest
-    const sortedCourses = allCourses.slice().sort((a, b) => b.name.localeCompare(a.name));
-    renderCoursesFromArray(sortedCourses);
+    sortedCourses = allCourses.slice().sort((a, b) => b.name.localeCompare(a.name));
+  } else {
+    return;
   }
+
+
+/*   if (event.target.value == 'weeksAsc')         sortedCourses = allCourses.slice().sort((a, b) => a.weeks - b.weeks);
+  else if (event.target.value == 'weeksDesc')   sortedCourses = allCourses.slice().sort((a, b) => b.weeks - a.weeks);
+  else if (event.target.value == 'nameAsc')     sortedCourses = allCourses.slice().sort((a, b) => a.name.localeCompare(b.name));
+  else if (event.target.value == 'nameDesc')    sortedCourses = allCourses.slice().sort((a, b) => b.name.localeCompare(a.name));
+  else                                          return;
+ */
+
+/*   switch (event.target.value) {
+    case 'weeksAsc':
+      sortedCourses = allCourses.slice().sort((a, b) => a.weeks - b.weeks);
+      break;
+    case 'weeksDesc':
+      sortedCourses = allCourses.slice().sort((a, b) => b.weeks - a.weeks);
+      break;
+    case 'nameAsc':
+      sortedCourses = allCourses.slice().sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case 'nameDesc':
+      sortedCourses = allCourses.slice().sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    default:
+      return;
+  } */
+
+  renderCoursesFromArray(sortedCourses);
 }
 
 const handleClickOfCourses = event => {
@@ -171,13 +223,14 @@ const getCourseAsHtmlString = course => {
     callout = `<small class="callout">Sold out</small>`;
     soldout = `soldout`;
     register = ``;
-  } else if (course.available < 5) {
+  } else if (course.available < settings.limited) {
     callout = `<small class="callout urgent">Limited seats remaining</small>`;
   }
 
   return `
     <article class="course ${(course.category) ? `cat-${course.category}` : ''} ${soldout}">
       <h3 id="name">${course.name} ${callout}</h3>
+      <img src="${settings.imagepath + course.image}" alt="${course.name}">
       <ul class="course-info">
         <li>Course Code: <strong>${course.code}</strong></li>
         <li>Instructor: <strong>${course.instructor}</strong></li>
@@ -195,6 +248,19 @@ const getCourseAsHtmlString = course => {
 }
 
 const renderCoursesFromArray = arr => {
+
+  // Check how many per page: settings.perpage
+  // totalNumCourses / settings.perpage, round it up = how many pages we need.
+  // 20 / 3 = 7 pages
+  // 1: 0, 1, 2
+  // 2: 3, 4, 5
+  // 3: 6, 7, 8
+  // 3: 9, 10, 11
+
+  // start: (pagenum - 1) * numperpage
+  // end: start + numperpage
+
+
   document.getElementById('courses').innerHTML = arr.map(getCourseAsHtmlString).join('\n');
 
   let res = 'results';
@@ -222,6 +288,8 @@ window.addEventListener('load', () => {
   document.getElementById('courseName').addEventListener('input', loadCoursesByName);
   document.getElementById('sortOrder').addEventListener('change', loadCoursesByOrder);
   document.getElementById('courses').addEventListener('click', handleClickOfCourses);
+      // Same as above:
+      // document.getElementById('courses').addEventListener('click', (event) => handleClickOfCourses(event));
 
   // Start
   renderCoursesFromArray(allCourses);
