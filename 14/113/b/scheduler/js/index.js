@@ -250,16 +250,22 @@ const getCourseAsHtmlString = course => {
 
 const renderCoursesFromArray = arr => {
 
-  // Check how many per page: settings.perpage
-  // totalNumCourses / settings.perpage, round it up = how many pages we need.
-  // 20 / 3 = 7 pages
-  // 1: 0, 1, 2
-  // 2: 3, 4, 5
-  // 3: 6, 7, 8
-  // 3: 9, 10, 11
+  // How many pages do we need? 
+  //  totalNumCourses / coursesPerPage
+  //    Round this^ up to the next integer
+  
+  // TEST EXAMPLE:  10 courses / 3 coursesPerPage = 4 pages required
+  //    Page 1:   0, 1, 2
+  //    Page 2:   3, 4, 5
+  //    Page 3:   6, 7, 8
+  //    Page 4:   9
 
-  // start: (pagenum - 1) * numperpage
-  // end: start + numperpage
+  // Therefor...
+  // Index of the first course on each page: 
+  //    firstIndexOnThisPage = (pageNum - 1) * coursesPerPage
+  // Index of the last course on each page:
+  //    lastIndexOnThisPage = firstIndexOnThisPage + coursesPerPage
+  //      (Remember that slice() excludes the last index.)å
 
 
   document.getElementById('courses').innerHTML = arr.map(getCourseAsHtmlString).join('\n');
