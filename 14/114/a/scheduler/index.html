@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scheduler</title>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+
+    <header>
+      <h1>Scheduler App</h1>
+      <p>Let's schedule a class. Here is the most important information required:</p>
+
+      <form class="filters" id="filtersForm">
+        <label for="courseName">Search by name:</label>
+        <input type="text" name="find" id="courseName">
+      
+        <label for="sortOrder">Sort by:</label>
+        <select name="sort" id="sortOrder" class="sort">
+          <!-- <option value="none" disabled selected>-- Sort by --</option> -->
+          <option value="nameAsc" selected>Name, A to Z</option>
+          <option value="nameDesc">Name, Z to A</option>
+          <option value="weeksAsc">Weeks, Least to Most</option>
+          <option value="weeksDesc">Weeks, Most to Least</option>
+        </select>
+
+        <label for="categoryName">Category:</label>
+        <select name="categoryName" id="categoryName">
+          <option value="all" selected>All courses</option>
+          <option value="design">Design</option>
+          <option value="development">Development</option>
+        </select>
+
+        <div>
+          <button type="submit">Filter</button>
+        </div>
+
+      </form>
+
+      <div>
+        <button id="fallCourses">Load Fall 2019</button>
+        <button id="courseView">Toggle Layout</button>
+      </div>
+    </header>
+
+    <main>
+      <h2>Courses <small id="numResults">(5 results)</small></h2>
+      <section id="courses" class="courses"></section>
+    </main>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>
