@@ -14,29 +14,36 @@
       <p>Let's schedule a class. Here is the most important information required:</p>
 
       <form class="filters" id="filtersForm">
-        <label for="courseName">Search by name:</label>
-        <input type="text" name="find" id="courseName">
-      
-        <label for="sortOrder">Sort by:</label>
-        <select name="sort" id="sortOrder" class="sort">
-          <!-- <option value="none" disabled selected>-- Sort by --</option> -->
-          <option value="nameAsc" selected>Name, A to Z</option>
-          <option value="nameDesc">Name, Z to A</option>
-          <option value="weeksAsc">Weeks, Least to Most</option>
-          <option value="weeksDesc">Weeks, Most to Least</option>
-        </select>
+        
+        <label for="courseName">Search by name:
+          <input type="text" name="find" id="courseName">
+        </label>
 
-        <label for="categoryName">Category:</label>
-        <select name="categoryName" id="categoryName">
-          <option value="all" selected>All courses</option>
-          <option value="design">Design</option>
-          <option value="development">Development</option>
-        </select>
 
-        <div>
+        <label for="categoryName">Category:
+          <select name="categoryName" id="categoryName">
+            <option value="all" selected>All courses</option>
+            <option value="design">Design</option>
+            <option value="development">Development</option>
+          </select>
+        </label>
+
+        <label>Semester:
+          <label>
+            All<input type="radio" name="semester" value="all" checked>
+          </label>
+          <label>
+            Fall 2019<input type="radio" name="semester" value="Fall 2019">
+          </label>
+          <label>
+            Winter 2020<input type="radio" name="semester" value="Winter 2020">
+          </label>
+        </label>
+
+
+        <!-- <div>
           <button type="submit">Filter</button>
-        </div>
-
+        </div> -->
       </form>
 
       <div>
@@ -46,7 +53,18 @@
     </header>
 
     <main>
-      <h2>Courses <small id="numResults">(5 results)</small></h2>
+      <header>
+        <h2>Courses <small id="numResults">(5 results)</small></h2>
+        <label for="sortOrder">Sort by:
+          <select name="sort" id="sortOrder" class="sort">
+            <!-- <option value="none" disabled selected>-- Sort by --</option> -->
+            <option value="nameAsc" selected>Name, A to Z</option>
+            <option value="nameDesc">Name, Z to A</option>
+            <option value="weeksAsc">Weeks, Least to Most</option>
+            <option value="weeksDesc">Weeks, Most to Least</option>
+          </select>
+        </label>
+      </header>
       <section id="courses" class="courses"></section>
     </main>
 

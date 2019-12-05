@@ -131,20 +131,20 @@ const loadCoursesByOrder = (arrToSort, criteria) => {
   return sortedCourses; // new array
 }
 
-// Sort and filter
+// Filter
 const runTheFilter = theForm => {
 
   const categoryToSearch = theForm.elements.categoryName.value;
   const nameToSearch = theForm.elements.courseName.value;
-  const sortBy = theForm.elements.sortOrder.value;
+  const semesterToSearch = theForm.elements.semester.value;
 
-  // Filter
-  let filteredCourses = allCourses
+  console.log(theForm.elements)
+
+  // Filter all courses in multiple
+  const filteredCourses = allCourses
     .filter(c => c.name.toLowerCase().includes( nameToSearch.trim().toLowerCase() ))  // filter by name
-    .filter(c => c.category == categoryToSearch || categoryToSearch == "all");        // filter by category
-
-  // Sort
-  filteredCourses = loadCoursesByOrder(filteredCourses, sortBy);  // sort the courses
+    .filter(c => c.category == categoryToSearch || categoryToSearch == "all")         // filter by category
+    .filter(c => `${c.start.term } ${c.start.year}` == semesterToSearch || semesterToSearch == "all");        // filter by semester
 
   renderCoursesFromArray(filteredCourses);
 }
@@ -184,6 +184,16 @@ const submitTheFilterForm = event => {
   //document.getElementById('filtersForm').submit();
   runTheFilter(event.target.form);
 }
+
+// When sorting, ensure the filters run first (which leads to a render)
+const sortTheCourses = event => {
+  runTheFilter(document.getElementById('filtersForm'));
+}
+
+
+// NOTE, COULD ALSO RUN THE FILTER FROM THE RENDER IF THE RENDER KNOWS WHICH FORM IT SHOULD CHECK FIRST
+// OR, COULD HAVE THE FORM SUBMIT AUTOMATICALLY WITH A SORT, WHICH IS POSSIBLY CLEANER
+
 
 
 // FUNCTIONS THAT BUILD OUR VIEW **************
@@ -227,110 +237,63 @@ const getCourseAsHtmlString = course => {
 
 const renderCoursesFromArray = arr => {
 
-  // How many pages do we need? 
-  //  totalNumCourses / coursesPerPage
-  //    Round this^ up to the next integer
-  
-  // TEST EXAMPLE:  10 courses / 3 coursesPerPage = 4 pages required
-  //    Page 1:   0, 1, 2
-  //    Page 2:   3, 4, 5
-  //    Page 3:   6, 7, 8
-  //    Page 4:   9
+  // 1. SORT!!!
+  const sortBy = document.getElementById('sortOrder').value;    // dropdown value
+  arr = loadCoursesByOrder(arr, sortBy);  // sort the courses, reassign the new Array
 
-  // Therefor...
-  // Index of the first course on each page: 
-  //    firstIndexOnThisPage = (pageNum - 1) * coursesPerPage
-  // Index of the last course on each page:
-  //    lastIndexOnThisPage = firstIndexOnThisPage + coursesPerPage
-  //      (Remember that slice() excludes the last index.)å
+  // 2. PAGINATE
+    // How many pages do we need? 
+    //  totalNumCourses / coursesPerPage
+    //    Round this^ up to the next integer
+    
+    // TEST EXAMPLE:  10 courses / 3 coursesPerPage = 4 pages required
+    //    Page 1:   0, 1, 2
+    //    Page 2:   3, 4, 5
+    //    Page 3:   6, 7, 8
+    //    Page 4:   9
+
+    // Therefor...
+    // Index of the first course on each page: 
+    //    firstIndexOnThisPage = (pageNum - 1) * coursesPerPage
+    // Index of the last course on each page:
+    //    lastIndexOnThisPage = firstIndexOnThisPage + coursesPerPage
+    //      (Remember that slice() excludes the last index.)
 
 
-  document.getElementById('courses').innerHTML = arr.map(getCourseAsHtmlString).join('\n');
-
-  let res = 'results';
-  if (arr.length == 1) {
-    res = 'result'
+  // 3. BUILD OUTPUT
+  if (arr.length > 0) {
+    document.getElementById('courses').innerHTML = arr.map(getCourseAsHtmlString).join('\n'); // Print courses  
+  } else {
+    document.getElementById('courses').innerHTML = 'Sorry, no matching results.' // Woops!
   }
-  document.getElementById('numResults').innerHTML = `(${arr.length} ${res})`;
 
-  // document.querySelectorAll('button.course-register').forEach(btn => {
-  //   btn.addEventListener('click', event => {
-  //     console.log(event);
-  //   })
-  // });
+  document.getElementById('numResults').innerHTML = `(${arr.length} ${(arr.length == 1) ? 'result' : 'results'})`; // Display number of total results
+  
 }
-
 
 
 /************* EXECUTABLE *************/
 
 window.addEventListener('load', () => {
 
-  // Event listeners
+  // The course elements
+  renderCoursesFromArray(allCourses);
+
+  // UI elements
   document.getElementById('courseView').addEventListener('click', toggleCourseView);
   document.getElementById('fallCourses').addEventListener('click', loadCoursesFromTerm);
+  document.getElementById('courses').addEventListener('click', handleClickOfCourses);
+  document.getElementById('sortOrder').addEventListener('change', sortTheCourses);
 
+  // The filter form
   document.getElementById('filtersForm').addEventListener('submit', filterTheCourses);
 
+  // The filter form components
   document.getElementById('courseName').addEventListener('input', submitTheFilterForm);
   document.getElementById('categoryName').addEventListener('change', submitTheFilterForm);
-  document.getElementById('sortOrder').addEventListener('change', submitTheFilterForm);
-  
-  
-  document.getElementById('courses').addEventListener('click', handleClickOfCourses);
-
- 
-
-  // Start
-  renderCoursesFromArray(allCourses);
+  document.querySelectorAll('[name="semester"]').forEach(radbtn => radbtn.addEventListener('change', submitTheFilterForm));
 
 });
 
 
-
-
-/* 
-- function with filter()
-- Dynamic content
-- Cleanup if statements
-- Event delegation comparison
-*/
-
-
-
-/* 
-? Today:
-  * Selecting document elements in other ways
-  * Iterating over multiple selections
-  * Styling form elements (and states)
-  * Events for <form>, <select>, type="radio", type="checkbox"
-  * Sorting Arrays by number and string
-  * Filtering examples
-
-? Next class:
-  * Pagination
-    * Or autoload on scroll
-    * Describe in words and drawings how this works
-  * Touch on: insertAdjacentHTML, createElement, appendChild, insertAdjacentElement
-    * Attach listeners easier
-  * Talk about:
-    * Assigning ids
-    * Event delegation
-*/
-
-
-/* const sortByLetter = (a, b) => {
-  if (a < b) {
-    return -1;
-  }
-  return 1;
-}
-
-const words = ['a', 'd', 'b', 'A']
-words.sort((a, b) => a.localeCompare(b));
-console.log(words)
-
-const unsorted = [100, 6, 30, 9, 7];
-const sorted = unsorted.slice().sort((a, b) => a - b);  // make a copy
-
-console.log(unsorted, sorted) */
+// Still to discuss: Arrays within our courses
