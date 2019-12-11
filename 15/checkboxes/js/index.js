@@ -8,6 +8,15 @@ const tasks = [
   },{ 
     name: 'Submit hours',
     categories: ['work']
+  },{ 
+    name: 'Something else',
+    categories: ['work', 'home', 'school']
+  },{ 
+    name: 'More things',
+    categories: ['school']
+  },{ 
+    name: 'Yet another',
+    categories: ['home', 'work']
   }
 ];
 
@@ -34,43 +43,64 @@ const getTaskAsHtml = (t) => {
 // One time call
 const renderAllTasks = (arr) => {
 
-  const whichTagsAreChecked = [];
-  
-  document.querySelectorAll('[name="tags"]').forEach(tag => {
-    if (tag.checked) {
-      whichTagsAreChecked.push(tag.value);
-    }
-  });
-
-  // console.log('Only showing: ' + whichTagsAreChecked.join(', '));
-  // console.log(arr.map(t => t.categories.join(', ')));
-
-
-  arr = arr.filter(task => {
-
-    let isPartOfFilter = false;
-    whichTagsAreChecked.forEach(cat => {
-      if (task.categories.includes(cat))
-        isPartOfFilter = true;
-    });
-
-    console.log(task.name, isPartOfFilter);
-
-    if (isPartOfFilter) {
-      return true;
-    }
-    return false;
-  })
-
-
-
-  
-
   /*
   If a arr Object (a task) has any of the whichTagsAreChecked 
   categories as part of its Array of categories, we should
   filter-in(true), otherwise, filter-out(false)
   */
+
+  const radioButtons = document.querySelectorAll('[name="tags"]');
+  
+  // Comparing methods speed wise: http://jsben.ch/3jotw
+  
+  const itemsInTheDesiredCategories = [];
+  radioButtons.forEach(tag => {
+    if (tag.checked) {
+      arr.forEach(task => {
+        if ( task.categories.includes(tag.value) && !itemsInTheDesiredCategories.includes(task)) {
+          itemsInTheDesiredCategories.push(task);
+        }
+      });
+    }
+  });
+  arr = itemsInTheDesiredCategories;
+
+/*   const whichTagsAreChecked = [];
+  radioButtons.forEach(tag => {
+    if (tag.checked) {
+      whichTagsAreChecked.push(tag.value);
+    }
+  });
+  arr = arr.filter(task => {
+    let isPartOfFilter = false;
+    whichTagsAreChecked.forEach(cat => {
+      if (task.categories.includes(cat)) {
+        isPartOfFilter = true;
+        return;
+      }
+    });
+    return isPartOfFilter;
+  }); */
+
+
+/*   arr = arr.reduce((acc, task) => {
+    for (const cat of task.categories) {
+      let isPartOfFilter = false;
+      radioButtons.forEach(tag => {
+        if (tag.checked && tag.value == cat) {
+          isPartOfFilter = true;
+          return;
+        }
+      });
+      if (isPartOfFilter) {
+        return [...acc, task];
+      }
+    }
+    return acc;
+  },[]);
+ */
+
+
 
 
 
